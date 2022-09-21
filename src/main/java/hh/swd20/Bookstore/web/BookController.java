@@ -6,13 +6,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import hh.swd20.Bookstore.domain.Book;
 import hh.swd20.Bookstore.domain.BookRepository;
 
 @Controller
-//@ResponseBody
+
 public class BookController {
 	
 	@Autowired
@@ -33,11 +32,6 @@ public class BookController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveBook(Book book) {
 		return "redirect:studentlist";
-	}
-	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String getBooks() {
-		return "No Books here yet...";		
 	}
 	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
