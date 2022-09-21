@@ -41,3 +41,8 @@ public class BookController {
 		return "redirect:../booklist";
 	}
 }
+
+
+
+//http://localhost:8080/booklist
+//localhost:8080/h2-console
