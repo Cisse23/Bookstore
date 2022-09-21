@@ -31,12 +31,13 @@ public class BookController {
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveBook(Book book) {
-		return "redirect:studentlist";
+		bookRepository.save(book);
+		return "redirect:booklist";
 	}
 	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteBook(@PathVariable("id") Long bookId, Model model) {
 		bookRepository.deleteById(bookId);
-		return "redirect:../studentlist";
+		return "redirect:../booklist";
 	}
 }
