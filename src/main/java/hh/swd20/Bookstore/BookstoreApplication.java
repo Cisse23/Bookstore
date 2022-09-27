@@ -26,27 +26,28 @@ public class BookstoreApplication {
 	@Bean
 	public CommandLineRunner bookTest(BookRepository bookRepository, CategoryRepository catRepository) { 
 		return (args) -> {
-			log.info("save a couple of books");
-			Book book1 = new Book("Pride and Prejudice", "Jane Austen", 2012, "9780141199078", 9.20 );
-			Book book2 = new Book("The Pillars of the Earth", "Ken Follett", 2017, "9781509848492", 21.95);
-			bookRepository.save(book1);
-			bookRepository.save(book2);	
 			log.info("save some categories");
 			Category cat1 = new Category("Satire");
-			Category cat2 = new Category("Adventure");
-			Category cat3 = new Category("Biography");
+			Category cat2 = new Category("Romance novel");
+			Category cat3 = new Category("Historical fiction");
 			catRepository.save(cat1);
 			catRepository.save(cat2);
 			catRepository.save(cat3);
 			
-			log.info("fetch all books");
-			for (Book b : bookRepository.findAll()) {
-				log.info(b.toString());
-			
+			log.info("save a couple of books");
+			Book book1 = new Book("Pride and Prejudice", "Jane Austen", 2012, "9780141199078", 9.20, cat2 );
+			Book book2 = new Book("The Pillars of the Earth", "Ken Follett", 2017, "9781509848492", 21.95, cat3);
+			bookRepository.save(book1);
+			bookRepository.save(book2);	
+
 			log.info("fetch all categories");
 			for (Category c : catRepository.findAll()) {
 				log.info(c.toString());
 			}
+			
+			log.info("fetch all books");
+			for (Book b : bookRepository.findAll()) {
+				log.info(b.toString());	
 			}
 		};
 	}

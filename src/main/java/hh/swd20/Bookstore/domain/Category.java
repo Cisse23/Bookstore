@@ -1,9 +1,13 @@
 package hh.swd20.Bookstore.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Category {
@@ -11,6 +15,9 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long categoryid;
 	private String name;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+	private List<Book> books;
 	
 	//konstruktorit
 	public Category(String name) {
@@ -31,6 +38,10 @@ public class Category {
 	public String getName() {
 		return name;
 	}
+	
+	public List<Book> getBooks(){
+		return books;
+	}
 
 	public void setCategoryid(Long categoryid) {
 		this.categoryid = categoryid;
@@ -38,6 +49,10 @@ public class Category {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public void setBooks(List<Book> books) {
+		this.books = books;
 	}
 
 	//toString
