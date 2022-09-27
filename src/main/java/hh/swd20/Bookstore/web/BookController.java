@@ -17,7 +17,7 @@ public class BookController {
 	@Autowired
 	private BookRepository bookRepository;
 	
-	@RequestMapping(value ="/booklist")
+	@RequestMapping(value = "/booklist")
 	public String bookList(Model model) {
 		model.addAttribute("books", bookRepository.findAll());
 		return "booklist";
