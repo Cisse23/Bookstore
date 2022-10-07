@@ -3,13 +3,14 @@
 <head>
     <title>Edit Book</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
 	<h1>Edit Book</h1>
 	<div>
 		<form th:object="${book}" th:action="@{/save}" action="#" method="post">
 		  	<label for="id">Id</label>
-		  	<input type="hidden" th:field="*{id}" readonly="readonly" />
+		  	<input type="hidden" th:field="*{id}" readonly="readonly" placeholder="*{id}"/>
 			<div style="clear: both; display: block; height: 10px;"></div>
 		  	
 		  	<label for="author">Author</label>
@@ -40,7 +41,8 @@
 			<input type="text" id="price" th:field="*{price}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
-			<input type="submit" value="Save"></input>
+			<button class="btn btn-success" type="submit"  value="Save">Save</button>
+			<a href="/booklist" class="btn btn-secondary">Return</a>
 		</form>
 	</div>
 </body>
