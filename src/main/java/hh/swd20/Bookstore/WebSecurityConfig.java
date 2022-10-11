@@ -26,6 +26,7 @@ public class WebSecurityConfig {
 		http
 		.authorizeRequests()
 		//.antMatchers("/booklist").permitAll() //tänne voi laittaa jos johonkin saa mennä ilman sisäänkirjautumista
+		.antMatchers("/delete/**").hasRole("ADMIN") //vain admin saa mennä tänne
 		.anyRequest().authenticated()
 		.and()
 	.formLogin()
