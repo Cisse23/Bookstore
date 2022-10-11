@@ -4,6 +4,8 @@ import hh.swd20.Bookstore.domain.Book;
 import hh.swd20.Bookstore.domain.BookRepository;
 import hh.swd20.Bookstore.domain.Category;
 import hh.swd20.Bookstore.domain.CategoryRepository;
+import hh.swd20.Bookstore.domain.User;
+import hh.swd20.Bookstore.domain.UserRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,10 +26,13 @@ public class BookstoreApplication {
 	
 //  testidatan luonti H2-testitietokantaan aina sovelluksen käynnistyessä
 	@Bean
-	public CommandLineRunner bookTest(BookRepository bookRepository, CategoryRepository catRepository) { 
+	public CommandLineRunner bookTest(BookRepository bookRepository, CategoryRepository catRepository, UserRepository userRepo) { 
 		return (args) -> {
 			log.info("save some books");
-
+			
+			userRepo.save(new User("Pekka", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER"));
+			userRepo.save(new User("Admiina", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN"));
+			
 			catRepository.save(new Category("Satire"));
 			catRepository.save(new Category("Romance novel"));
 			catRepository.save(new Category("Historical fiction"));
